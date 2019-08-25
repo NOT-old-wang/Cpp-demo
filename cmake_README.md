@@ -1,5 +1,3 @@
-
-
 ## CMakeLists 语法
 
 ### 注
@@ -13,20 +11,26 @@ help: cmake--help [按tab]
 ```
 ### 变量：
 ```cmake
-# 设置： 
+# 设置cmake变量SRC_LISTS 
 set(SRC_LISTS
     src/mian.cpp
 )
+# 设置环境变量HOME
+set(ENV{HOME} xxx)
 
-# 引用 
+# 引用cmke变量
 ${SRC_LISTS}
+# 调用环境变量 HOME
+$ENV{HOME}
 
 # 常用变量
 PROJECT_NAME:
 PROJECT_SOURCE_DIR:
-PROJECT_BINARY_DIR:
-LIBRARY_OUTPUT_PATH:
-EXECUTABLE_OUTPUT_PATH:
+PROJECT_BINARY_DIR: 
+CMAKE_CURRENT_SOURCE_DIR: CMakeLists.txt文件所在的路径
+CMAKE_MODULE_PATH： 定义自己cmake模块的路径
+LIBRARY_OUTPUT_PATH:  库文件存放路径
+EXECUTABLE_OUTPUT_PATH: 可执行文件存放路径
 CMAKE_INSTALL_PREFIX: cmake安装目录前缀， 默认为/usr/local
 
 
@@ -49,14 +53,14 @@ $ENV{NAME}
 ```
 
 ### 条件语句：
-```
-if(var)
-    # do something
-    ...
-else()
-    # do something
-    ...
-endif()
+```cmake
+if(WIN32)
+message(STATUS “This is windows.”)
+#做一些 Windows 相关的操作
+else(WIN32)
+message(STATUS “This is not windows”)
+#做一些非 Windows 相关的操作
+endif(WIN32)
 ```
 ### 循环语句：
 ```cmake
@@ -99,6 +103,7 @@ add_definitions(-std=c++11) # set( CMAKE_CXX_FLAGS "-std=c++11 -O3" )
 
 #### 获得一个目录下的所有源文件
 ```cmake
+# 这个指令临时被用来自动构建源文件列表
 aux_source_directoies (src/ DIR_SRCS)
 ```
 #### 包含子目录
@@ -125,10 +130,11 @@ link_libraries( lib1 lib2 ...)
 - 编译成库
 
 ```cmake
+# 默认生成静态库, 如果 SET(BUILD_SHARED_LIBS ON)后，默认生成的为动态库
 # 静态库 .a
 add_library(Hello STATIC hello.cxx)  # 将hello.cxx编译成静态库如libHello.a
-# 动态库 .so
-add_library(Hello SHARE hello.cxx)  # 将hello.cxx编译成动态库如libHello.so
+# 共享库 .so
+add_library(Hello SHARED hello.cxx)  # 将hello.cxx编译成共享库如libHello.so
 # 设置版本 VERSION 指代动态库版本，SOVERSION 指代 API 版本
 set_target_properties(hello PROPERTIES VERSION 1.2 SOVERSION 1)
 ```
@@ -137,6 +143,11 @@ set_target_properties(hello PROPERTIES VERSION 1.2 SOVERSION 1)
 ```cmake
 link_directories (${HELLO_BINARY_DIR}/Hello)  # 增加Hello为link目录
 ```
+- 模块使用与制作
+```cmake
+
+```
+
 
 #### 打印相关
 ```
@@ -180,7 +191,7 @@ install(PROGRAMS
    DESTINATION install_script_dir/
 )
 
-# 链接库的安装 将 my_lib_name 安装到相应位置
+# 链接库的安装 将 my_lib_name 安装到相应位置[绝对路径]
 ## Mark executables and/or libraries for installation
 install(TARGETS my_lib_name
   ARCHIVE DESTINATION ${PACKAGE_LIB_DESTINATION}
@@ -197,7 +208,38 @@ install(TARGETS my_lib_name
 )
 ```
 
-#### 在 CMakeLists.txt 执行命令
+### 在 CMakeLists.txt 执行命令
+```cmake
+## exec_program(Executable [directory in which to run]
+#               [ARGS <arguments to executable>]
+#               [OUTPUT_VARIABLE <var>]
+#               [RETURN_VALUE <var>])
+
+exec_program(ls ARGS "*.c" OUTPUT_VARIABLE LS_OUTPUT RETURN_VALUE LS_RVALUE)
 ```
-EXEC_PROGRAM
+
+### 其他技巧
+```cmake
+# 构建失败，查看细节
+make VERBOSE=1
+# 将添加的头文件搜索路径放在已有路径的前面 include<hello/hello.h> -> incude<hello.h>
+set(CMAKE_INCLUDE_DIRECTORIES_BEFORE on)
+
+# 查看可执行文件链接库情况, linux 命令
+$ ldd a.out
 ```
+
+###  环境变量
+
+```bash
+# 设置头文件路径 和 链接库路径
+$ export CMAKE_INCLUDE_PATH=/usr/include/hello
+$ export CMAKE_LIBRARY_PATH=/usr/local/lib
+```
+```cmake
+find_path(myHeader hello.h)
+if(myHeader)
+include_directory(${myHeader})
+endif(myHeader)
+```
+
