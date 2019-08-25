@@ -143,11 +143,59 @@ set_target_properties(hello PROPERTIES VERSION 1.2 SOVERSION 1)
 ```cmake
 link_directories (${HELLO_BINARY_DIR}/Hello)  # 增加Hello为link目录
 ```
-- 模块使用与制作
+
+#### 模块相关
+- 使用模块
 ```cmake
+# 对于系统预定义的 Find<name>.cmake 模块，使用方法一般如下：
+# 每一个模块都会定义以下几个变量
+# <name>_FOUND 判断模块是否被找到
+# <name>_INCLUDE_DIR or <name>_INCLUDES 
+# <name>_LIBRARY or <name>_LIBRARIES
+find_package(CURL)
+if(CURL_FOUND)
+	include_directories(${CURL_INCLUDE_DIR})
+	target_link_libraries(curltest ${CURL_LIBRARY})
+else(CURL_FOUND)
+	message(FATAL_ERROR ”CURL library not found”)
+endif(CURL_FOUND)
 
+# 注
+## find_package(<package> [version] [EXACT] [QUIET] [MODULE]
+#              [REQUIRED] [[COMPONENTS] [components...]] 
+#              [OPTIONAL_COMPONENTS components...]
+#              [NO_POLICY_SCOPE])
+# QUIET: 不输出信息
+# REQUIRED： 该模块是必须的，找不到就错误
 ```
+- 制作模块
+```cmake
+# 顶层CMakeListsz.txt 中添加 模块路径
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
+```
+```cmake
+# hello.cmake 模块例程参考
+# 设置头文件路径
+find_path(HELLO_INCLUDE_DIR hello.h /usr/include/hello
+/usr/local/include/hello)
+# 设置链接库路径
+find_library(HELLO_LIBRARY NAMES hello PATH /usr/lib
+/usr/local/lib)
+# 如果设置到位
+if (HELLO_INCLUDE_DIR AND HELLO_LIBRARY)
+	set(HELLO_FOUND TRUE)
+endif(HELLO_INCLUDE_DIR AND HEELO_LIBRARY)
 
+if (HELLO_FOUND)
+	if (NOT HELLO_FIND_QUIETLY) ## find_package()没有设置QUIET
+	message(STATUS "Found Hello: ${HELLO_LIBRARY}")
+	endif (NOT HELLO_FIND_QUIETLY)
+else (HELLO_FOUND)
+	if (HELLO_FIND_REQUIRED)
+	message(FATAL_ERROR "Could not find hello library")
+	endif (HELLO_FIND_REQUIRED)
+endif (HELLO_FOUND)
+```
 
 #### 打印相关
 ```
