@@ -137,6 +137,8 @@ add_library(Hello STATIC hello.cxx)  # 将hello.cxx编译成静态库如libHello
 add_library(Hello SHARED hello.cxx)  # 将hello.cxx编译成共享库如libHello.so
 # 设置版本 VERSION 指代动态库版本，SOVERSION 指代 API 版本
 set_target_properties(hello PROPERTIES VERSION 1.2 SOVERSION 1)
+# 设置库名
+set_target_properties(Hello PROPERTIES OUTPUT_NAME "my_hello")
 ```
 - 动态链接库或静态链接库的搜索路径，相当于gcc的-L参数
 
