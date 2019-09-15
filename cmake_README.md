@@ -55,10 +55,10 @@ $ENV{NAME}
 ### 条件语句：
 ```cmake
 if(WIN32)
-message(STATUS “This is windows.”)
+    message(STATUS “This is windows.”)
 #做一些 Windows 相关的操作
 else(WIN32)
-message(STATUS “This is not windows”)
+    message(STATUS “This is not windows”)
 #做一些非 Windows 相关的操作
 endif(WIN32)
 ```
