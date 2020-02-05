@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 project(queue)
 
 add_compile_options(-std=c++11)
-
+ 
 set(USE_PROJECT normal/)
 
 include_directories(${USE_PROJECT})

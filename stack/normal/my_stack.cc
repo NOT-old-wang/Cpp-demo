@@ -3,10 +3,8 @@ Copyright [2019]
 */
 #include "my_stack.h"
 
-MyStack::MyStack(int size) {
-  size_ = size;
-  top_ = 0;
-  buffer = new int[size_];
+MyStack::MyStack(int capacity) : capacity_(capacity), size_(0), top_(-1) {
+  buffer = new int[capacity_];
 }
 
 MyStack::~MyStack() {
@@ -18,8 +16,9 @@ bool MyStack::Push(const int& elem) {
   if (Full()) {
     return false;
   }
-  buffer[top_] = elem;
   top_++;
+  buffer[top_] = elem;
+  size_++;
   return true;
 }
 
@@ -28,5 +27,6 @@ bool MyStack::Pop() {
     return false;
   }
   top_--;
+  size_--;
   return true;
 }

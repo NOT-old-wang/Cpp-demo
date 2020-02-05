@@ -6,21 +6,24 @@ Copyright [2019]
 
 class MyStack {
  public:
-  explicit MyStack(int size);
+  explicit MyStack(int capacity);
   ~MyStack();
 
-  bool Empty() { return 0 == top_ ? true : false; }
-  int Size() { return top_; }
+  int Top() { return buffer[top_]; }
+
+  bool Empty() { return 0 == size_ ? true : false; }
+  int Size() { return size_; }
 
   bool Push(const int &elem);
   bool Pop();
   void Clear() { top_ = 0; }
 
  private:
-  bool Full() { return size_ == top_ ? true : false; }
+  bool Full() { return capacity_ == size_ ? true : false; }
 
   int top_;
   int size_;
+  int capacity_;
   int *buffer;
 };
 

@@ -20,7 +20,7 @@ class MyQueue {
   // 元素修改
   bool Push(const int& element);
   bool Pop();
-  void Clear();
+  // void Clear();
 
  private:
   bool Full() const { return capacity_ == size_ ? true : false; }
