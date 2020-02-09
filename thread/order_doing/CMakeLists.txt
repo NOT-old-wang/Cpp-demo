@@ -3,7 +3,7 @@ project(thread)
 
 add_compile_options(-std=c++11)
  
-set(USE_PROJECT stl_test/)
+set(USE_PROJECT .)
 
 # find_package(Threads REQUIRED)
 
