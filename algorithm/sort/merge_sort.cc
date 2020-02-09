@@ -63,7 +63,6 @@ std::vector<int> MergeSort(std::vector<int>& nums, int left, int right) {
   auto nums2 = MergeSort(nums, mid + 1, right);  // 右侧归并
 
   std::vector<int> res;  // 临时数组,返回排序好的部分数组
-  // Merge(nums1, nums2, res); ?
   int i = 0;
   int j = 0;
   // 只要有一个数组被遍历完,则跳出循环
@@ -80,6 +79,8 @@ std::vector<int> MergeSort(std::vector<int>& nums, int left, int right) {
   while (j < nums2.size()) res.push_back(nums2[j++]);  // 同理
   return res;
 }
+
+
 
 int main(int argc, const char** argv) {
   std::vector<int> test{3, 4, 2, 1, 9, 6, 5, 8, 7};

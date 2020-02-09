@@ -1,9 +1,17 @@
 #include <iostream>
 #include <vector>
+/*
+方法步骤：
+1: 将数组分成左右两部份
+2: 递归排序左子数组
+3: 递归排序右子数组
+*/
 
 void QuickSort(std::vector<int>& nums, int left, int right);
-void QuickSortSwap(std::vector<int>& nums, int left, int right);
+// 模式1
 void QuickSort(std::vector<int>& nums);
+// 模式2
+void QuickSortSwap(std::vector<int>& nums, int left, int right);
 
 void QuickSort(std::vector<int>& nums) {
   int left = 0;
