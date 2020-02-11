@@ -86,29 +86,29 @@ inline ThreadPool::~ThreadPool() {
   }
 }
 
-void task1(int time) {
+void Task1(int time) {
   while (true) {
     std::this_thread::sleep_for(std::chrono::milliseconds(time));
     std::cout << "task 1" << std::endl;
   }
 }
 
-std::string task2(std::string s) {
+std::string Task2(std::string s) {
   std::cout << "task 2" << std::endl;
   return s;
 }
 
-void task3() {
+void Task3() {
   std::this_thread::sleep_for(std::chrono::milliseconds(3000));
   std::cout << "task 3" << std::endl;
 }
 
 int main(int argc, const char** argv) {
   ThreadPool thread_pool(2);
-  thread_pool.EnQueue(task1, 1000);
-  auto s = thread_pool.EnQueue(task2, "task 2 finished");
+  thread_pool.EnQueue(Task1, 1000);
+  auto s = thread_pool.EnQueue(Task2, "task 2 finished");
   std::cout << s.get() << std::endl;
-  thread_pool.EnQueue(task3);
+  thread_pool.EnQueue(Yask3);
   // std::this_thread::sleep_for(std::chrono::milliseconds(2000));
   return 0;
 }
