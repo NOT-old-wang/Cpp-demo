@@ -1,0 +1,29 @@
+// 语法版本
+syntax = "proto2";
+
+// package名
+package protobuf.demo;
+
+// 字段修饰符: required >=1; optional <=1; repeated 无限制
+// proto3 去除 required 和 optional
+message Person {
+  // 基本类型
+  required string name = 1;
+  required int32 id = 2;
+  optional string email = 3;
+
+  // 枚举
+  enum PhoneType {
+    MOBILE = 0;
+    HOME = 1;
+    WORK = 2;
+  }
+ 
+  message PhoneNumber {
+    required string number = 1;
+    optional PhoneType type = 2 [default = HOME];
+  }
+  
+  // 消息对象
+  repeated PhoneNumber phone = 4;
+}
