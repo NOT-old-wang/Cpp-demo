@@ -54,7 +54,7 @@ int main(int argc, const char **argv) {
     protobuf::demo::Person::PhoneNumber *phone_number1 =
         person_server.add_phone();
     phone_number1->set_number("123");
-    phone_number1->set_type(protobuf::demo::Person::HOME);
+    phone_number1->set_type(protobuf::demo::Person::WORK);
 
     protobuf::demo::Person::PhoneNumber *phone_number2 =
         person_server.add_phone();

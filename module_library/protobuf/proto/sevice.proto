@@ -1,0 +1,26 @@
+// 语法版本
+syntax = "proto2";
+
+// package名
+package protobuf.service;
+
+// 服务: 可用于 RPC
+// service 定义开放调用的服务，即 UserInfoService 微服务
+service UserInfoService {
+  // rpc 定义服务内的 GetUserInfo 远程调用
+  rpc GetUserInfo (UserRequest) returns (UserResponse) {
+  }
+}
+
+// 定义客户端请求的数据格式
+message UserRequest {
+  string name = 1;
+}
+
+// 定义服务端响应的数据格式
+message UserResponse {
+  int32 id = 1;
+  string name = 2;
+  int32 age = 3;
+  repeated string title = 4;
+} 
