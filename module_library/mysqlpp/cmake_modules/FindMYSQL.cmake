@@ -10,7 +10,7 @@ if(MYSQL_INCLUDE_DIR)
   set(MYSQL_FIND_QUIETLY true)
 endif (MYSQL_INCLUDE_DIR)
 
-# 从下面那两个路径找mysql.h，将找到的路径放到MYSQL_INCLUDE_DIR这个变量中。
+# 从下面那两个路径找 mysql.h，将找到的路径放到 MYSQL_INCLUDE_DIR 这个变量中。
 find_path(MYSQL_INCLUDE_DIR mysql.h
   /usr/local/include/mysql
   /usr/include/mysql
@@ -25,7 +25,7 @@ find_library(MYSQL_LIBRARY
   PATH_SUFFIXES mysql
 )
 
-# 如果上面找到mysql的头文件和mysql的库文件，就将MYSQL_FOUND设为真
+# 如果上面找到 mysql 的头文件和 mysql 的库文件，就将MYSQL_FOUND设为真
 if(MYSQL_INCLUDE_DIR AND MYSQL_LIBRARY)
   set(MYSQL_FOUND true)
   set(MYSQL_LIBRARIES ${MYSQL_LIBRARY} )
