@@ -27,3 +27,4 @@ $ ./gflag_demo -flagfile=/home/wangjy/Programming/module_library/gflag/demo.gfla
 ## 参考教程
 - [官方文档](https://gflags.github.io/gflags/)
 - [简书参考](https://www.jianshu.com/p/2179938a818d)
+- [blog参考](http://www.yeolar.com/note/2014/12/14/gflags/)
