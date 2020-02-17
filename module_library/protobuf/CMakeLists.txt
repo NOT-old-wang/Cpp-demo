@@ -5,9 +5,6 @@ add_compile_options(-std=c++11)
 
 set(PROTO_FILES 
   proto/demo.proto
-  proto/adaptive_voxel_filter_options.proto
-  proto/transform.proto
-  proto/sensor.proto
 )
 
 find_package(protobuf REQUIRED)

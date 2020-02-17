@@ -9,8 +9,22 @@
 3: 输出日志文件
 4: 检测宏
 5: 崩溃处理
+注：可以 gflag 配合使用
 ```
+### 检测宏相关
+```
+CHECK_EQ(x,y)<<"x!=y"，EQ即equation，意为“等于”，函数判断是否x等于y，当x!=y时，函数打印出x!=y。
 
+CHECK_NE(x,y)<<"x=y"，NE即not equation，意为“不等于”，函数判断是否x不等于y，当x=y时，函数打印出x=y。
+
+CHECK_LE(x,y) <<"x>=y",LE即lower equation,意为小于等于，函数判断是否x小于等于y。当x>=y时，函数打印x>=y。
+
+CHECK_LT(x,y)<<"x>=y",LT即为lower to ，意为小于，函数判断是否x小于y，当x>y时，函数打印x>y。
+
+CHECK_GE(x,y) <<"x<=y",GE即为great equation，意为大于。判断意义根据上述可推导出。
+
+CHECK_GT(x,y) <<"x<=y",同理如上。
+```
 ## 一些标志
 - FLAGS_minloglevel = 0  // 记录的日志等级，INFO: 0, WARNING: 1, ERROR: 2 FATAL: 3
 - FLAGS_log_dir = "/home/user/logs/" // 设置日志文件地址
