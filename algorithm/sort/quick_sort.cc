@@ -16,11 +16,11 @@ void QuickSortSwap(std::vector<int>& nums, int left, int right);
 void QuickSort(std::vector<int>& nums) {
   int left = 0;
   int right = nums.size() - 1;
-#if 0
+#if 1
   QuickSort(nums, left, right);
 #endif
 
-#if 1
+#if 0
   QuickSortSwap(nums, left, right);
 #endif
 }
@@ -32,10 +32,10 @@ void QuickSort(std::vector<int>& nums) {
 void QuickSort(std::vector<int>& nums, int left, int right) {
   if (left >= right) return;
   int cur = left;
-  for (int i = 0; i < right; i++) {
-    // 右基准 
-    if (nums[i] < nums[right]) {
-    // nums[cur]之前的数都小于等于nums[right]
+  for (int i = left; i < right; i++) {
+    // 右基准
+    if (nums[i] <= nums[right]) {
+      // nums[cur]之前的数都小于等于nums[right]
       std::swap(nums[cur], nums[i]);
       cur++;
     }
@@ -46,31 +46,31 @@ void QuickSort(std::vector<int>& nums, int left, int right) {
   QuickSort(nums, ++cur, right);
 }
 
-void QuickSortSwap(std::vector<int>& nums, int left, int right) {
-  if (left >= right) return;
-  // 左基准，从左开始
-  int temp = nums[left];
-  int p = left + 1;
-  int q = right;
-  while (p < q) {
-    // 向右找到第一个大于基准数的位置
-    while (p < q && nums[p] < temp) p++;
-    // 向左找到第一个大于基准数的位置
-    while (p < q && nums[q] > temp) q--;
-    if (p < q) {
-      std::swap(nums[p], nums[q]);
-      p++;
-      q--;
-    }
-  }
-  int index = q;
-  std::swap(nums[left], nums[index]);
-  QuickSortSwap(nums, left, --index);
-  QuickSortSwap(nums, ++index, right);
-}
+// void QuickSortSwap(std::vector<int>& nums, int left, int right) {
+//   if (left >= right) return;
+//   // 左基准，从左开始
+//   int temp = nums[left];
+//   int p = left + 1;
+//   int q = right;
+//   while (p < q) {
+//     // 向右找到第一个大于基准数的位置
+//     while (p < q && nums[p] > temp) p++;
+//     // 向左找到第一个小于基准数的位置
+//     while (p < q && nums[q] <= temp) q--;
+//     if (p < q) {
+//       std::swap(nums[p], nums[q]);
+//       p++;
+//       q--;
+//     }
+//   }
+//   int index = q;
+//   std::swap(nums[left], nums[index]);
+//   QuickSortSwap(nums, left, --index);
+//   QuickSortSwap(nums, ++index, right);
+// }
 
 int main(int argc, const char** argv) {
-  std::vector<int> test{3, 4, 2, 1, 9, 6, 5, 8, 7};
+  std::vector<int> test{3, 2, 3, 1, 2, 4, 5, 5, 6};
   QuickSort(test);
 
   for (int num : test) {
