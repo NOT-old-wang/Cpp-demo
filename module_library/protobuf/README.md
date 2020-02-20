@@ -3,6 +3,20 @@
 - protocol buffers 是Google开源的一种灵活,高效,自动化机制的结构数据序列化方法; 可类比 XML, json
 - 序列化: 就是将内存中的数据结构对象转换为字节序列，方便持久化到磁盘或者网络传输。
 - 反序列化: 就是将字节序列转换为内存中的对象
+
+## 安装 protobuf
+```bash
+$ git clone https://github.com/protocolbuffers/protobuf.git
+$ cd protobuf
+$ ./autogen.sh  # 如果报错  ./autogen.sh: autoreconf: not found, 就安装 sudo apt-get install autoconf
+$ ./configure --prefix=/usr/local/protobuf
+$ make
+$ sudo make check
+$ sudo make install
+# 查看是否有安装版本
+$ protoc --version
+```
+
 ## 编译
 ```bash
 $ cd protobuf

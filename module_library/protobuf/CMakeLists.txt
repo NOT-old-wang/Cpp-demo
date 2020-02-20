@@ -7,6 +7,7 @@ set(PROTO_FILES
   proto/demo.proto
 )
 
+include(FindProtobuf)
 find_package(protobuf REQUIRED)
 if(PROTOBUF_FOUND)
   message(STATUS "protobuf library found")

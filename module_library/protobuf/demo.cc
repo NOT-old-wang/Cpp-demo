@@ -1,10 +1,7 @@
 #include <google/protobuf/message_lite.h>
 #include <fstream>
 #include <iostream>
-#include "adaptive_voxel_filter_options.pb.h"
 #include "demo.pb.h"
-#include "sensor.pb.h"
-#include "transform.pb.h"
 
 #define USE_STREAM 1
 #define USE_STRING 0
