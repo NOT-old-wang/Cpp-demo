@@ -1,0 +1,11 @@
+Log file created at: 2020/02/18 09:50:41
+Running on machine: wangjy
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0218 09:50:41.215471 11806 demo.cc:78] *** Aborted at 1581990641 (unix time) try "date -d @1581990641" if you are using GNU date ***
+E0218 09:50:41.215833 11806 demo.cc:78] PC: @                0x0 (unknown)
+E0218 09:50:41.215945 11806 demo.cc:78] *** SIGSEGV (@0x0) received by PID 11806 (TID 0x7f26219aee80) from PID 0; stack trace: ***
+E0218 09:50:41.216208 11806 demo.cc:78]     @     0x7f26213a6390 (unknown)
+E0218 09:50:41.216372 11806 demo.cc:78]     @           0x405527 fun()
+E0218 09:50:41.216502 11806 demo.cc:78]     @           0x40535e main
+E0218 09:50:41.216722 11806 demo.cc:78]     @     0x7f26209f0830 __libc_start_main
+E0218 09:50:41.216854 11806 demo.cc:78]     @           0x404b99 _start

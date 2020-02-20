@@ -1,6 +1,17 @@
 # glog
 ## 概要
-- glog 是 Google开源的日志库
+- glog 是 Google开源的日志
+
+## 安装 glog
+```bash
+$ git clone https://github.com/google/glog 
+$ cd glog
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ make install
+```
 
 ## 作用
 ```

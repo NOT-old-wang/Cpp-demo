@@ -1,0 +1,8 @@
+*** Aborted at 1581990641 (unix time) try "date -d @1581990641" if you are using GNU date ***
+PC: @                0x0 (unknown)
+*** SIGSEGV (@0x0) received by PID 11806 (TID 0x7f26219aee80) from PID 0; stack trace: ***
+    @     0x7f26213a6390 (unknown)
+    @           0x405527 fun()
+    @           0x40535e main
+    @     0x7f26209f0830 __libc_start_main
+    @           0x404b99 _start
