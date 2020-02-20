@@ -1,8 +1,8 @@
 // 语法版本
-syntax = "proto2";
+syntax = "proto3";
 
 // package名
-package protobuf.service;
+package grpc_demo.service;
 
 // 服务: 可用于 RPC
 // service 定义开放调用的服务，即 UserInfoService 微服务
@@ -19,8 +19,8 @@ message UserRequest {
 
 // 定义服务端响应的数据格式
 message UserResponse {
-  int32 id = 1;
-  string name = 2;
+  string name = 1;
+  int32 id = 2;
   int32 age = 3;
-  repeated string title = 4;
+  string sex = 4;
 } 
