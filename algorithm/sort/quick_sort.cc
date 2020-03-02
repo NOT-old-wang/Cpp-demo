@@ -7,20 +7,20 @@
 3: 递归排序右子数组
 */
 
-void QuickSort(std::vector<int>& nums, int left, int right);
-// 模式1
 void QuickSort(std::vector<int>& nums);
-// 模式2
+// 模式1, 选择一个基准
+void QuickSort(std::vector<int>& nums, int left, int right);
+// 模式2, 左右同时进行
 void QuickSortSwap(std::vector<int>& nums, int left, int right);
 
 void QuickSort(std::vector<int>& nums) {
   int left = 0;
   int right = nums.size() - 1;
-#if 1
+#if 0
   QuickSort(nums, left, right);
 #endif
 
-#if 0
+#if 1
   QuickSortSwap(nums, left, right);
 #endif
 }
@@ -46,31 +46,28 @@ void QuickSort(std::vector<int>& nums, int left, int right) {
   QuickSort(nums, ++cur, right);
 }
 
-// void QuickSortSwap(std::vector<int>& nums, int left, int right) {
-//   if (left >= right) return;
-//   // 左基准，从左开始
-//   int temp = nums[left];
-//   int p = left + 1;
-//   int q = right;
-//   while (p < q) {
-//     // 向右找到第一个大于基准数的位置
-//     while (p < q && nums[p] > temp) p++;
-//     // 向左找到第一个小于基准数的位置
-//     while (p < q && nums[q] <= temp) q--;
-//     if (p < q) {
-//       std::swap(nums[p], nums[q]);
-//       p++;
-//       q--;
-//     }
-//   }
-//   int index = q;
-//   std::swap(nums[left], nums[index]);
-//   QuickSortSwap(nums, left, --index);
-//   QuickSortSwap(nums, ++index, right);
-// }
+void QuickSortSwap(std::vector<int>& nums, int left, int right) {
+  if(left >= right) return;
+	int i = left;
+  int j = right;
+	int base = nums[left];  //取最左边的数为基准数
+	while (i < j) {
+		while (nums[j] >= base && i < j)
+			j--;
+		while (nums[i] <= base && i < j)
+			i++;
+		if(i < j) {
+      std::swap(nums[i], nums[j]);
+		}
+	}
+	//基准数归位
+	std::swap(nums[left], nums[i]);
+	QuickSortSwap(nums, left, i-1); 
+	QuickSortSwap(nums, i+1, right);
+}
 
 int main(int argc, const char** argv) {
-  std::vector<int> test{3, 2, 3, 1, 2, 4, 5, 5, 6};
+  std::vector<int> test{3, 1000, 2, 56, 67, 3, 1, 2, 4, 100, 99, 5, 5, 6};
   QuickSort(test);
 
   for (int num : test) {
