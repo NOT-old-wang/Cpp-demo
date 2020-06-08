@@ -32,6 +32,7 @@ CMAKE_MODULE_PATH： 定义自己cmake模块的路径
 LIBRARY_OUTPUT_PATH:  库文件存放路径
 EXECUTABLE_OUTPUT_PATH: 可执行文件存放路径
 CMAKE_INSTALL_PREFIX: cmake安装目录前缀， 默认为/usr/local
+例： cmake -D CMAKE_INSTALL_PREFIX="/some/where/local"  ..
 
 
 # 内部隐示变量
