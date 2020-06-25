@@ -84,6 +84,12 @@ INSERT INTO reader(name,date) VALUES('wuyifan',20187475);
 SELECT * FROM book;  
 SELECT * FROM reader;  
 
+- 高级(一些函数语句)
+ORDER BY rating DESC （排序 降序）
+MOD(3, 2) (对2取模)
+<>  (!=)
+TODO(others)
+
 #### 查询数据表  
 - SQL SELECT 语句  
 SELECT 列名称 FROM 表名称  
