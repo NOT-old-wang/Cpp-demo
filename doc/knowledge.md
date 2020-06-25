@@ -29,6 +29,13 @@ Quility of Service: 指一个网络能够利用各种基础技术，为指定的
 interface description language: 过一种中立的方式来描述接口，使得在不同平台上运行的对象和用不同语言编写的程序可以相互通信交流
 ```
 
+- URI
+```
+Uniform Resource Identifier: 统一资源标识符，用于标识某一互联网资源名称的字符串，
+[协议名]://[用户名]:[密码]@[服务器地址]:[服务器端口号]/[路径]?[查询字符串]#[片段ID]
+protocol://host:port
+```
+
 - RAII
 ```
 Resource Acquisition Is Initialization: 资源获取就是初始化”，是c++等编程语言常用的管理资源、避免内存泄露的方法。它保证在任何情况下，使用对象时先构造对象，最后析构对象
