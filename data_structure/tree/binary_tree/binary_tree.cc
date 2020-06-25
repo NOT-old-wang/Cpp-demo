@@ -113,7 +113,7 @@ class TreeOperator {
  */
   void PreorderTraversal() const {
     if (tree_ == nullptr) return;
-   std::cout << "DLR traversal: " << std::endl;
+    std::cout << "DLR traversal: " << std::endl;
     std::vector<int> tree_nums;
     std::stack<TreeNode*> tree_stack;
     tree_stack.push(tree_);
