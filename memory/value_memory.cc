@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
   static int static_value_3 = 0;
   int value_1;
   int value_2 = 0;
-  // int *p = malloc(sizeof(int));
+  void *p = malloc(sizeof(int));
   printf("g_value_1 address: %p\n", &g_value_1);
   printf("g_value_2 address: %p\n", &g_value_2);
   printf("g_static_value_1 address: %p\n", &g_static_value_1);
@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
   printf("static_value_3 address: %p\n", &static_value_3);
   printf("value_1 address: %p\n", &value_1);
   printf("value_2 address: %p\n", &value_2);
-  //  printf("p address: %p\n", &p);
+  printf("p address: %p\n", p);
   fun();
   return 0;
 }
