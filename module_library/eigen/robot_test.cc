@@ -4,37 +4,7 @@
 
 using namespace std;
 
-// 旋转表示方法: 欧拉角(表示沿哪个轴旋转)，旋转向量(旋转轴+旋转角)，旋转矩阵，
-// 四元数(增加一纬度，避免万向锁)
 int main(int argc, const char** argv) {
-  cout << "##-------------------搞清旋转关系-------------------##" << endl;
-  Eigen::Vector3d v1(1, 1, 0);  //列向量（1系下）
-  Eigen::AngleAxisd angle_axis1(
-      M_PI / 4, Eigen::Vector3d(0, 0, 1));  // 1系绕z轴逆时针旋转45得到2系
-  Eigen::Vector3d rotated_v1 = angle_axis1.matrix().inverse() * v1;
-  cout << "绕z轴逆时针旋转45°(R12):" << endl << angle_axis1.matrix() << endl;
-  cout << "(1, 1, 0)旋转后:" << endl << rotated_v1.transpose() << endl;
-  cout << "------------------------------------------------------" << endl;
-
-  Eigen::Vector3d v2;
-  v2 << 0, 1, 1;
-  Eigen::AngleAxisd angle_axis2(
-      M_PI / 4, Eigen::Vector3d(1, 0, 0));  // 1系绕x轴逆时针旋转45得到2系
-  Eigen::Vector3d rotated_v2 = angle_axis2.matrix().inverse() * v2;
-  cout << "绕x轴逆时针旋转45°(R12):" << endl << angle_axis2.matrix() << endl;
-  cout << "(0, 1, 1)旋转后:" << endl << rotated_v2.transpose() << endl;
-  cout << "------------------------------------------------------" << endl;
-
-  Eigen::Vector3d v3(0, 0, 0);
-  v3.x() = 1;
-  v3[2] = 1;
-  Eigen::AngleAxisd angle_axis3(
-      M_PI / 4, Eigen::Vector3d(0, 1, 0));  // 1系绕y轴逆时针旋转45得到2系
-  Eigen::Vector3d rotated_v3 = angle_axis3.matrix().inverse() * v3;
-  cout << "绕y轴逆时针旋转45°(R12):" << endl
-       << angle_axis3.matrix() << endl;  //注意和绕x轴z轴不一样
-  cout << "(1, 0, 1)旋转后:" << endl << rotated_v3.transpose() << endl;
-
   cout << "##-------------------常用数学运算-------------------##" << endl;
   Eigen::Vector3d v4(1, 1, 0);
   cout << "(1, 1, 0)模长：" << v4.norm() << endl;
@@ -83,38 +53,6 @@ int main(int argc, const char** argv) {
   // cout << "q: " << q.w() << " " << q.x() << " " << q.y() << " " << q.z() <<
   // endl;
 
-  cout << "##旋转向量（轴角）、旋转矩阵、欧拉角、四元素相互转换##" << endl;
-  //旋转向量（轴角）
-  Eigen::AngleAxisd rotation_vector(
-      M_PI / 4, Eigen::Vector3d(0, 1, 0));  //绕y轴逆时针旋转45度(转yaw)
-  cout << "axi: " << rotation_vector.axis().transpose()
-       << " angle: " << rotation_vector.angle() * 180 / M_PI << endl;
-
-  //旋转向量->旋转矩阵
-  Eigen::Matrix3d rotation_matrix3d = rotation_vector.matrix();
-  // Eigen::Matrix3d rotation_matrix3d = rotation_vector.toRotationMatrix();
-  cout << "rotation_matrix:" << endl << rotation_matrix3d << endl;
-
-  //旋转矩阵->欧拉角
-  Eigen::Vector3d euler_angles = rotation_matrix3d.eulerAngles(
-      0, 1, 2);  //(0,1,2)表示分别绕XYZ轴顺序，即pitch yaw roll顺序，逆时针为正
-  cout << "pitch yaw roll = " << euler_angles.transpose() * 180 / M_PI << endl;
-
-  //旋转向量->四元素
-  Eigen::Quaterniond q = Eigen::Quaterniond(rotation_vector);  //或用旋转矩阵
-  cout << "q: " << q.w() << " " << q.x() << " " << q.y() << " " << q.z()
-       << endl;
-
-  //旋转矩阵->旋转向量
-  Eigen::AngleAxisd rotation_vector2;
-  rotation_vector2.fromRotationMatrix(rotation_matrix3d);
-  cout << "axi: " << rotation_vector.axis().transpose()
-       << " angle: " << rotation_vector.angle() * 180 / M_PI << endl;
-
-  //四元素->旋转矩阵
-  Eigen::Quaterniond q2 = Eigen::Quaterniond(1, 0, 0, 0);  //(w,x,y,z)
-  cout << "q2:" << endl << q2.toRotationMatrix() << endl;
-
   cout << "##------------------解线性方程------------------##" << endl;
   // AX = 0
   //(AX)`(AX)
@@ -137,6 +75,6 @@ int main(int argc, const char** argv) {
 
   // getchar();
 
-//   std::cout << Eigen::Vector2d::Ones() << std::endl;
+  //   std::cout << Eigen::Vector2d::Ones() << std::endl;
   return 0;
 }
