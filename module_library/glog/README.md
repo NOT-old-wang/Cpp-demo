@@ -37,6 +37,8 @@ CHECK_GE(x,y) <<"x<=y",GE即为great equation，意为大于。判断意义根�
 CHECK_GT(x,y) <<"x<=y",同理如上。
 ```
 ## 一些标志
+- FLAGS_stderrthreshold  // 输出到stderr的门限，默认为2（ERROR），默认，ERORR以下的信息不打印到终端
+- FLAGS_alsologtostderr　//　当这个全局变量为真时，忽略FLAGS_stderrthreshold的限制，所有信息打印到终端
 - FLAGS_minloglevel = 0  // 记录的日志等级，INFO: 0, WARNING: 1, ERROR: 2 FATAL: 3
 - FLAGS_log_dir = "/home/user/logs/" // 设置日志文件地址
 - FLAGS_logtostderr = 1  // 使得日志信息记录到stderr而不会保存到本地日志文件中，即使你设置了FLAGS_log_dir
@@ -61,3 +63,4 @@ $ ./gflag_demo
 - [官方文档](...)
 - [官方文档中文翻译](http://www.yeolar.com/note/2014/12/20/glog/)
 - [csdn参考](https://blog.csdn.net/qq_34347375/article/details/86629421)
+- [官方翻译](https://www.cnblogs.com/JZ-Ser/articles/7909800.html)
