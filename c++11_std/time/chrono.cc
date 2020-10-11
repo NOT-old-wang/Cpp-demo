@@ -22,4 +22,5 @@ int main() {
                                                                      start)
                    .count()
             << "us.\n";
+  return 0;
 }

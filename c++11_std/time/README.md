@@ -28,3 +28,35 @@
 
 ## 参考
 [Linux时间参考](https://haoqchen.site/2019/12/17/linux-time-summary/)
+
+## linux中的时间
+### 两种数据结构
+1. time_t: `long`类型,用来存储从1970年到现在经过了多少秒，要想更精确一点，可以用结构 `struct timeval`,两个`long`类型
+```C
+struct timeval
+{
+    long tv_sec; /*秒*/
+    long tv_usec; /*微秒*/
+};
+```
+2. tm: `struct`类型，直接存储年月日的是一个结构
+```c
+struct tm
+{
+    int tm_sec;  /*秒，正常范围0-59， 但允许至61*/
+    int tm_min;  /*分钟，0-59*/
+    int tm_hour; /*小时， 0-23*/
+    int tm_mday; /*日，即一个月中的第几天，1-31*/
+    int tm_mon;  /*月， 从一月算起，0-11*/
+    int tm_year;  /*年， 从1900至今已经多少年*/
+    int tm_wday; /*星期，一周中的第几天， 从星期日算起，0-6*/
+    int tm_yday; /*从今年1月1日到目前的天数，范围0-365*/
+    int tm_isdst; /*日光节约时间的旗标*/
+};
+```
+### bash命令
+```bash
+$ date # 输出年月日
+$ date +%s # 输出时间戳
+$
+```
