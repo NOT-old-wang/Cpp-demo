@@ -40,3 +40,12 @@ protocol://host:port
 ```
 Resource Acquisition Is Initialization: 资源获取就是初始化”，是c++等编程语言常用的管理资源、避免内存泄露的方法。它保证在任何情况下，使用对象时先构造对象，最后析构对象
 ```
+
+- FTSP：The Flooding Time Synchronization Protocol
+```
+是在无线传感器网络中被广泛使用的时间同步协议，主要解决了3个问题：
+1、 两个设备之间的时间对齐：时间戳同步
+2、 两个设备之间晶体振荡器的对齐
+3、 同步网络中所有的设备
+```
+[参考](https://zhuanlan.zhihu.com/p/34982463)
