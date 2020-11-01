@@ -20,11 +20,9 @@
 ```
 
 - time_point 的时钟有三种
-```
-1: system_clock 来自系统范畴实时时钟的挂钟时间
-2: steady_clock 决不会调整的单调时钟
-3: high_resolution_clock  拥有可用的最短嘀嗒周期的时钟
-```
+1. system_clock 来自系统范畴实时时钟的挂钟时间, 不稳定的, 完全自动适应本地账户的调节,这种调节可能造成的是，首次调用now()返回的时间要早于上次调用now()所返回的时间，这就违反了节拍频率的均匀分布, windows精度为100纳秒左右
+2. steady_clock 决不会调整的单调时钟
+3. high_resolution_clock  拥有可用的最短嘀嗒周期的时钟, 精度为1纳秒左右
 
 ## 参考
 [Linux时间参考](https://haoqchen.site/2019/12/17/linux-time-summary/)
