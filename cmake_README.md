@@ -24,6 +24,7 @@ ${SRC_LISTS}
 $ENV{HOME}
 
 # 常用变量
+[变量参考](https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/Useful-Variables)
 PROJECT_NAME:
 PROJECT_SOURCE_DIR:
 PROJECT_BINARY_DIR: 
@@ -33,7 +34,13 @@ LIBRARY_OUTPUT_PATH:  库文件存放路径
 EXECUTABLE_OUTPUT_PATH: 可执行文件存放路径
 CMAKE_INSTALL_PREFIX: cmake安装目录前缀， 默认为/usr/local
 例： cmake -D CMAKE_INSTALL_PREFIX="/some/where/local"  ..
-
+CMAKE_BUILD_TYPE: "Release"
+CMAKE_CXX_FLAGS_RELEASE: "-O2"
+例：
+set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_CXX_FLAGS "-Wall")
+set(CMAKE_CXX_FLAGS_DEBUG "-g3")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 # 内部隐示变量
 CMAKE_C_COMPILER：指定C编译器

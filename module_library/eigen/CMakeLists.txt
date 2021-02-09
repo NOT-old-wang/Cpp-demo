@@ -7,7 +7,10 @@ include_directories(
   include
   /usr/local/include
   /usr/local/opt/eigen/include/eigen3
+  /usr/include/eigen3
 )
+# set(CMAKE_BUILD_TYPE "Release")
+# set(CMAKE_CXX_FLAGS "-O2")
 
 # add_executable(${PROJECT_NAME}_demo1 demo_1.cc )
 # add_executable(${PROJECT_NAME}_demo2 demo_2.cc )
