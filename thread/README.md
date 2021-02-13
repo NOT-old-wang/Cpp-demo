@@ -1,4 +1,5 @@
 [资料](https://www.cnblogs.com/haippy/p/3235560.html)
+[操作系统限制相关](https://blog.csdn.net/vic_qxz/article/details/82219301?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.baidujs&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-12.baidujs)
 
 ```
 注意： 
@@ -11,3 +12,9 @@
 2. 锁: 互斥, 超时互斥, 递归互斥(带时间， 不带时间)
 3. 条件变量: std::condition_variable, std::condition_variable_any
 4. 原子变量: std::atomic<T>, 不需要加锁 
+
+## linux 命令
+```bash
+$ ps -aux | grep <进程名> # 查看进程 pid
+$ pstree -p <pid> # 查看线程树
+```

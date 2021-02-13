@@ -286,6 +286,7 @@ set(CMAKE_INCLUDE_DIRECTORIES_BEFORE on)
 # 查看可执行文件链接库情况, linux 命令
 $ ldd a.out
 ```
+[外部项目引用下载](https://www.cnblogs.com/hatlonely/p/9115970.html)
 
 ###  环境变量
 
