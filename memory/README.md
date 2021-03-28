@@ -11,3 +11,8 @@
 
 ## 操作系统对内存的操作
 [虚拟内存和物理内存](https://mp.weixin.qq.com/s/HJB_ATQFNqG82YBCRr97CA)
+
+## 经验
+memcpy 拷贝普通指针 和 结构体/类内的指针 不一样
+doube copy 耗时20us
+vector 的效率是 map的6倍

@@ -17,4 +17,6 @@
 ```bash
 $ ps -aux | grep <进程名> # 查看进程 pid
 $ pstree -p <pid> # 查看线程树
+$ top -H -p <pid> # 查看线程cpu占用
 ```
+[top命令](http://www.blogjava.net/DLevin/archive/2014/12/31/421982.html)
