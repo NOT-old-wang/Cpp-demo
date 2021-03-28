@@ -56,8 +56,28 @@ $ thread apply all bt # 所有线程执行打印堆栈
 
 ### 调试段错误
 [参考](https://blog.csdn.net/deutschester/article/details/6739861)
+[linux下的core文件](https://blog.csdn.net/xuleilx/article/details/19092011)
+- 注
+```
+临时修改：修改/proc/sys/kernel/core_pattern文件，但/proc目录本身是动态加载的，每次系统重启都会重新加载，因此这种方法只能作为临时修改。 /proc/sys/kernel/core_pattern
+例：echo ‘/var/log/%e.core.%p’ > /proc/sys/kernel/core_pattern
+永久修改：使用sysctl -w name=value命令
+例：/sbin/sysctl -w kernel.core_pattern=/var/log/%e.core.%p
+```
+core dumped 会产生core文件
 ```bash
+$  gdb ./a.out core文件
+```
 
+### 断点
+1. 普通断点
+2. 观察断点 watch
+3. 捕捉断点 catch
+```bash
+# 捕获: 需要有异常发生
+$ catch throw int
+# 在个别场景中，还可以使用 catch 命令监控 C、C++ 程序动态库的加载和卸载
+$ catch load libstdc++.so.6 
 ```
 
 
